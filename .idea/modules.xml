@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/CSV-reader.iml" filepath="$PROJECT_DIR$/.idea/CSV-reader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/CSV-IO.iml" filepath="$PROJECT_DIR$/.idea/CSV-IO.iml" />
     </modules>
   </component>
 </project>
