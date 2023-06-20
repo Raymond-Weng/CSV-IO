@@ -24,23 +24,28 @@ public class CsvOutput {
      * @throws IOException if something wrong when writing the file, this will be thrown
      */
     public void write(String[][] table) throws IOException {
+        //check if the file is editable
+        if (!file.canWrite()) {
+            throw new IOException("The file isn't editable.");
+        }
+
         //change the array into the format of csv file
-        String string = "";
+        StringBuilder string = new StringBuilder();
         for (int i = 0; i < table.length; i++) {
             for (int r = 0; r < table[0].length; r++) {
-                string = string + table[r][i];
+                string.append(table[r][i]);
                 if (r + 1 != table[0].length) {
-                    string = string + ",";
+                    string.append(",");
                 }
             }
             if (i + 1 != table.length) {
-                string = string + "\n";
+                string.append("\n");
             }
         }
 
         //write the string in to the file
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
-        bufferedWriter.write(string);
+        bufferedWriter.write(string.toString());
 
         //close the IO object
         bufferedWriter.close();

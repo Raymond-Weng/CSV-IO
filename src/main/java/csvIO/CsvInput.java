@@ -26,21 +26,21 @@ public class CsvInput {
     public String[][] read() throws IOException {
         //check the file is readable
         if (!file.canRead()) {
-            throw new IOException();
+            throw new IOException("The file isn't readable.");
         }
 
         //read the whole file
         BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-        String string = "";
+        StringBuilder string = new StringBuilder();
         while (bufferedReader.ready()) {
-            string = string + bufferedReader.readLine();
+            string.append(bufferedReader.readLine());
             if (bufferedReader.ready()) {
-                string = string + "\n";
+                string.append("\n");
             }
         }
 
         //try split the long text in to an array
-        String[] rows = string.split("\n");
+        String[] rows = string.toString().split("\n");
         String[][] result = new String[rows[0].split(",").length][rows.length];
         for (int i = 0; i < rows.length; i++) {
             String[] items = rows[i].split(",");
